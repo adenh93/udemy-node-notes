@@ -1,0 +1,1 @@
+exports.getNotes = () => "Your notes...";
