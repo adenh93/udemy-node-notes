@@ -1,0 +1,23 @@
+{
+  "name": "udemy-node-notes",
+  "version": "1.0.0",
+  "description": "A repository to follow along with the Notes example app used in the Udemy Complete Node course at https://www.udemy.com/course/the-complete-nodejs-developer-course-2",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adenh93/udemy-node-notes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adenh93/udemy-node-notes/issues"
+  },
+  "homepage": "https://github.com/adenh93/udemy-node-notes#readme",
+  "dependencies": {
+    "validator": "^10.8.0"
+  }
+}
