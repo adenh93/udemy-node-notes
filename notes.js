@@ -1,21 +1,37 @@
 const fs = require("fs");
+const chalk = require("chalk");
 
 const fileName = "notes.json";
 
 exports.getNotes = () => "Your notes...";
 
+exports.removeNote = title => {
+  const notes = loadNotes();
+  const newNotes = notes.filter(x => x.title !== title);
+
+  if (notes.length === newNotes.length) {
+    console.log(chalk.white.bgRed(`Note with title '${title}' not found!`));
+    return;
+  }
+
+  saveNotes(newNotes);
+  console.log(chalk.black.bgGreen(`Deleted note with title '${title}'!`));
+};
+
 exports.addNote = (title, body) => {
   const notes = loadNotes();
-  const duplicateNotes = notes.filter(x => x.title === title);
+  const noteExists = notes.filter(x => x.title === title).length > 0;
 
-  if (duplicateNotes.length > 0) {
-    console.log(`Note with title '${title}' already exists!`);
+  if (noteExists) {
+    console.log(
+      chalk.white.bgRed(`Note with title '${title}' already exists!`)
+    );
     return;
   }
 
   notes.push({ title, body });
   saveNotes(notes);
-  console.log("Added new note!");
+  console.log(chalk.black.bgGreen("Added new note!"));
 };
 
 const saveNotes = notes => {
