@@ -18,8 +18,7 @@ yargs.command({
       type: "string"
     }
   },
-  handler: ({ title, body }) =>
-    console.log(`Adding a new note \nTitle: ${title} \nBody: ${body}`)
+  handler: ({ title, body }) => notes.addNote(title, body)
 });
 
 //Create remove command
