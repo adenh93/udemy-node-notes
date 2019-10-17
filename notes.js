@@ -3,7 +3,11 @@ const chalk = require("chalk");
 
 const fileName = "notes.json";
 
-exports.getNotes = () => "Your notes...";
+exports.listNotes = () => {
+  const notes = loadNotes();
+  console.log(chalk.white.bgBlue("Your notes"));
+  notes.forEach(x => console.log(x.title));
+};
 
 exports.removeNote = title => {
   const notes = loadNotes();
