@@ -6,12 +6,25 @@ const fileName = "notes.json";
 exports.listNotes = () => {
   const notes = loadNotes();
   console.log(chalk.white.bgBlue("Your notes"));
-  notes.forEach(x => console.log(x.title));
+  notes.forEach(note => console.log(note.title));
+};
+
+exports.readNote = title => {
+  const notes = loadNotes();
+  const note = notes.find(note => note.title === title);
+
+  if (!note) {
+    console.log(chalk.white.bgRed(`Note with title '${title}' not found!`));
+    return;
+  }
+
+  console.log(chalk.inverse.bold(note.title));
+  console.log(note.body);
 };
 
 exports.removeNote = title => {
   const notes = loadNotes();
-  const newNotes = notes.filter(x => x.title !== title);
+  const newNotes = notes.filter(note => note.title !== title);
 
   if (notes.length === newNotes.length) {
     console.log(chalk.white.bgRed(`Note with title '${title}' not found!`));
@@ -24,7 +37,7 @@ exports.removeNote = title => {
 
 exports.addNote = (title, body) => {
   const notes = loadNotes();
-  const noteExists = notes.find(x => x.title === title);
+  const noteExists = notes.find(note => note.title === title);
 
   if (noteExists) {
     console.log(
