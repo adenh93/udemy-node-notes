@@ -24,7 +24,7 @@ exports.removeNote = title => {
 
 exports.addNote = (title, body) => {
   const notes = loadNotes();
-  const noteExists = notes.filter(x => x.title === title).length > 0;
+  const noteExists = notes.find(x => x.title === title);
 
   if (noteExists) {
     console.log(
